@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  polygon-api-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - POLYGON_API_KEY=${POLYGON_API_KEY}
+    # Uncomment the following line if you want to auto-reload on code changes (requires nodemon in your Dockerfile)
+    # volumes:
+    #   - ./src:/usr/src/app/src
