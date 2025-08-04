@@ -66,7 +66,7 @@ class PolygonService {
 
                 for (let [timestamp, rsiValue] of rsiMap.entries()) {
                     merged.push({
-                        timestamp,
+                        date: this.formateDate(timestamp),
                         rsi: rsiValue,
                         ema: emaMap.get(timestamp),
                         sma: smaMap.get(timestamp)
@@ -81,6 +81,11 @@ class PolygonService {
         } catch (error) {
             throw new Error(`Error merging indicators: ${error.message}`);
         }
+    }
+
+    formateDate(timestamp) {
+        const date = new Date(timestamp);  
+        return date.toISOString().split('T')[0]; // Format as YYYY-MM-DD 
     }
 }
 
